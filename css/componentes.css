@@ -1,0 +1,11 @@
+.clase {
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#btnContinuar {
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+}
