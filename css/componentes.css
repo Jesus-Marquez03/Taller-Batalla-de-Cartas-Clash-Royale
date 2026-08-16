@@ -9,3 +9,16 @@
     margin-top: 15px;
     cursor: pointer;
 }
+
+.carta h3 {
+    margin-top: 0;
+}
+
+.carta button {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.seleccionada {
+    border: 2px solid gold;
+}
