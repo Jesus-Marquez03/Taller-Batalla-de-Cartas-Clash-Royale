@@ -22,3 +22,108 @@
 .seleccionada {
     border: 2px solid gold;
 }
+
+/* ==========================================
+   VENTANA DE RESULTADO
+   ========================================== */
+
+.ventanaResultado {
+
+    display: none;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.7);
+
+    z-index: 1000;
+
+}
+
+
+.contenidoResultado {
+
+    background-color: white;
+
+    color: black;
+
+    width: 300px;
+
+    margin: 150px auto;
+
+    padding: 25px;
+
+    text-align: center;
+
+    border: 3px solid #1e3a8a;
+
+}
+
+
+.contenidoResultado h2 {
+
+    color: black;
+
+}
+
+
+.contenidoResultado p {
+
+    color: black;
+
+}
+
+
+#marcadorResultado {
+
+    font-size: 40px;
+
+    font-weight: bold;
+
+}
+
+
+#btnContinuar {
+
+    padding: 10px 25px;
+
+    cursor: pointer;
+
+}
+
+.batallaHistorial {
+
+    width: 300px;
+
+    margin: 15px auto;
+
+    padding: 15px;
+
+    border: 2px solid white;
+
+    background-color: #334155;
+
+}
+
+
+.batallaHistorial h3 {
+
+    margin-top: 0;
+
+}
+
+
+#btnVolverArena {
+
+    padding: 10px 20px;
+
+    margin-top: 20px;
+
+    cursor: pointer;
+
+}
