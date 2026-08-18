@@ -1,18 +1,208 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #1e293b;
-    color: white;
-    text-align: center;
+/* ==========================================
+   ESTILOS GENERALES
+   ========================================== */
+
+* {
+    box-sizing: border-box;
 }
+
+
+body {
+
+    margin: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-color: #102a43;
+
+    color: white;
+
+    text-align: center;
+
+}
+
+
+/* ==========================================
+   CONTENIDO PRINCIPAL
+   ========================================== */
 
 main {
-    width: 80%;
-    margin: 50px auto;
+
+    width: 90%;
+
+    max-width: 1200px;
+
+    margin: 30px auto;
+
+    padding: 25px;
+
+    background-color: #1e3a5f;
+
+    border: 3px solid #f4c430;
+
+    border-radius: 15px;
+
 }
 
-button,
-a{
+
+/* ==========================================
+   TÍTULOS
+   ========================================== */
+
+h1 {
+
+    color: #f4c430;
+
+    font-size: 38px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 10px;
+
+}
+
+
+h2 {
+
+    color: #ffd966;
+
+}
+
+
+h3 {
+
+    color: #f4c430;
+
+}
+
+
+/* ==========================================
+   TEXTOS
+   ========================================== */
+
+p {
+
+    line-height: 1.5;
+
+}
+
+
+/* ==========================================
+   INPUT
+   ========================================== */
+
+input {
+
+    width: 280px;
+
+    padding: 12px;
+
+    margin: 10px;
+
+    border: 2px solid #f4c430;
+
+    border-radius: 5px;
+
+    font-size: 16px;
+
+}
+
+
+/* ==========================================
+   BOTONES
+   ========================================== */
+
+button {
+
     padding: 10px 20px;
-    margin: 5px;
+
+    margin: 8px;
+
+    border: 2px solid #f4c430;
+
+    border-radius: 6px;
+
+    background-color: #2874c6;
+
+    color: white;
+
+    font-weight: bold;
+
     cursor: pointer;
+
+}
+
+
+button:hover {
+
+    background-color: #1d5fa7;
+
+}
+
+
+/* ==========================================
+   ENLACES
+   ========================================== */
+
+a {
+
+    display: inline-block;
+
+    padding: 12px 25px;
+
+    margin: 10px;
+
+    background-color: #2874c6;
+
+    color: white;
+
+    border: 2px solid #f4c430;
+
+    border-radius: 6px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+}
+
+
+a:hover {
+
+    background-color: #1d5fa7;
+
+}
+
+
+/* ==========================================
+   SECCIONES
+   ========================================== */
+
+section {
+
+    margin: 25px 0;
+
+    padding: 20px;
+
+    background-color: #16324f;
+
+    border-radius: 10px;
+
+}
+
+
+/* ==========================================
+   MENSAJES
+   ========================================== */
+
+#mensaje,
+#mensajeBatalla,
+#mensajeCombate {
+
+    color: #ffd966;
+
+    font-weight: bold;
+
+    margin: 15px;
+
 }

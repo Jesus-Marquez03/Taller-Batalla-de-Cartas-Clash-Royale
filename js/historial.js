@@ -13,7 +13,14 @@ function guardarBatalla(resultado, marcador) {
     let historialBatallas =
         JSON.parse(
             localStorage.getItem("historialBatallas")
-        ) || [];
+        );
+
+
+    if (historialBatallas === null) {
+
+        historialBatallas = [];
+
+    }
 
 
     historialBatallas.push(batalla);
@@ -40,14 +47,25 @@ function mostrarHistorial() {
         document.getElementById("btnVolverArena");
 
 
-    const historialBatallas =
+    let historialBatallas =
         JSON.parse(
             localStorage.getItem("historialBatallas")
-        ) || [];
+        );
+
+
+    if (historialBatallas === null) {
+
+        historialBatallas = [];
+
+    }
 
 
     historialContenedor.innerHTML = "";
 
+
+    // ==========================================
+    // HISTORIAL VACÍO
+    // ==========================================
 
     if (historialBatallas.length === 0) {
 
@@ -56,12 +74,23 @@ function mostrarHistorial() {
 
     } else {
 
-        for (let i = 0; i < historialBatallas.length; i++) {
+        // ==========================================
+        // MOSTRAR BATALLAS
+        // ==========================================
 
-            const batalla = historialBatallas[i];
+        for (
+            let i = 0;
+            i < historialBatallas.length;
+            i++
+        ) {
+
+            const batalla =
+                historialBatallas[i];
+
 
             const tarjeta =
                 document.createElement("div");
+
 
             tarjeta.className =
                 "batallaHistorial";
@@ -89,32 +118,29 @@ function mostrarHistorial() {
     }
 
 
-    btnVolverArena.addEventListener(
-        "click",
-        function() {
+    // ==========================================
+    // VOLVER A LA ARENA
+    // ==========================================
 
-            volverArena();
+    if (btnVolverArena) {
 
-        }
-    );
+        btnVolverArena.addEventListener(
+            "click",
+            function() {
 
-}
+                window.location.href =
+                    "./arena-batalla.html";
 
+            }
+        );
 
-// ==========================================
-// VOLVER A LA ARENA
-// ==========================================
-
-function volverArena() {
-
-    window.location.href =
-        "./arena-batalla.html";
+    }
 
 }
 
 
 // ==========================================
-// EXPORT
+// EXPORTAR
 // ==========================================
 
 export {
