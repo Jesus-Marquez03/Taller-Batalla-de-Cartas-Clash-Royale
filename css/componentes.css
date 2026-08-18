@@ -1,368 +1,2059 @@
-/* ==========================================
-   BOTONES DE CLASE
-   ========================================== */
+/* =====================================================
+   CARD BATTLE - COMPONENTES
+   ===================================================== */
+
+
+/* =====================================================
+   1. SELECCIÓN DE CLASE
+   ===================================================== */
+
+#clases {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(150px, 1fr)
+        );
+
+    gap:
+        14px;
+
+    margin:
+        24px 0;
+
+}
+
 
 .clase {
 
-    padding: 12px 18px;
+    position:
+        relative;
 
-    margin: 6px;
+    min-height:
+        78px;
+
+    padding:
+        15px;
+
+    color:
+        var(--texto);
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #153553,
+            #0b2036
+        );
+
+    border:
+        1px solid
+        rgba(98, 200, 255, 0.2);
+
+    border-radius:
+        12px;
 
 }
 
 
 .clase:hover {
 
-    background-color: #f4c430;
+    color:
+        white;
 
-    color: #102a43;
+    background:
+
+        linear-gradient(
+            145deg,
+            #1a4f76,
+            #123252
+        );
+
+    border-color:
+        var(--azul-neon);
+
+    box-shadow:
+        0 0 20px
+        rgba(0, 217, 255, 0.18);
 
 }
 
 
-/* ==========================================
-   BOTÓN CONTINUAR
-   ========================================== */
+.clase.clase--activa {
 
-#btnContinuar {
+    color:
+        #07101d;
 
-    padding: 12px 25px;
+    background:
 
-    margin-top: 15px;
+        linear-gradient(
+            135deg,
+            var(--dorado),
+            var(--dorado-claro)
+        );
+
+    border-color:
+        white;
+
+    box-shadow:
+        0 0 25px
+        rgba(255, 200, 61, 0.32);
 
 }
 
 
-/* ==========================================
-   CARTAS
-   ========================================== */
+#descripcionClase {
+
+    min-height:
+        60px;
+
+    margin:
+        18px 0 10px;
+
+    padding:
+        15px;
+
+    color:
+        var(--texto-secundario);
+
+    background:
+        rgba(4, 15, 28, 0.7);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+
+    border-radius:
+        10px;
+
+}
+
+
+#claseSeleccionada {
+
+    color:
+        var(--dorado-claro);
+
+    font-weight:
+        700;
+
+}
+
+
+/* =====================================================
+   2. GRID DE CARTAS
+   ===================================================== */
+
+#cartasDisponibles,
+#mazoJugador {
+
+    display:
+        grid;
+
+    grid-template-columns:
+
+        repeat(
+            auto-fit,
+            minmax(195px, 1fr)
+        );
+
+    gap:
+        20px;
+
+}
+
+
+#mazoJugador:empty::after {
+
+    content:
+        "Aún no has seleccionado cartas.";
+
+    grid-column:
+        1 / -1;
+
+    padding:
+        32px;
+
+    color:
+        var(--texto-secundario);
+
+    text-align:
+        center;
+
+    background:
+        rgba(5, 15, 28, 0.45);
+
+    border:
+        1px dashed
+        rgba(98, 200, 255, 0.25);
+
+    border-radius:
+        14px;
+
+}
+
+
+/* =====================================================
+   3. CARTA GENERAL
+   ===================================================== */
 
 .carta {
 
-    display: inline-block;
+    position:
+        relative;
 
-    vertical-align: top;
+    overflow:
+        hidden;
 
-    width: 175px;
+    display:
+        flex;
 
-    min-height: 230px;
+    flex-direction:
+        column;
 
-    padding: 15px;
+    min-height:
+        365px;
 
-    margin: 10px;
+    background:
 
-    background-color: #234e70;
+        linear-gradient(
+            160deg,
+            #173b5c,
+            #091b2d 72%
+        );
 
-    border: 3px solid #f4c430;
+    border:
+        2px solid
+        rgba(98, 200, 255, 0.28);
 
-    border-radius: 12px;
+    border-radius:
+        18px;
+
+    box-shadow:
+        0 16px 35px
+        rgba(0, 0, 0, 0.4);
+
+    transition:
+
+        transform
+        0.25s ease,
+
+        border-color
+        0.25s ease,
+
+        box-shadow
+        0.25s ease;
+
+}
+
+
+.carta::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        5;
+
+    pointer-events:
+        none;
+
+    border-radius:
+        inherit;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.08),
+            transparent 28%
+        );
+
+}
+
+
+.carta:hover {
+
+    transform:
+        translateY(-8px)
+        scale(1.015);
+
+    border-color:
+        var(--azul-neon);
+
+    box-shadow:
+
+        0 20px 45px
+        rgba(0, 0, 0, 0.55),
+
+        0 0 25px
+        rgba(0, 217, 255, 0.14);
+
+}
+
+
+/* =====================================================
+   4. IMAGEN DE CARTA
+   ===================================================== */
+
+.carta__imagen-wrapper {
+
+    position:
+        relative;
+
+    height:
+        205px;
+
+    overflow:
+        hidden;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(0, 217, 255, 0.22),
+            transparent 64%
+        ),
+
+        #061320;
+
+}
+
+
+.carta__imagen {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    object-position:
+        center;
+
+    transition:
+        transform
+        0.35s ease;
+
+}
+
+
+.carta:hover
+.carta__imagen {
+
+    transform:
+        scale(1.06);
+
+}
+
+
+.carta__imagen-wrapper::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    bottom:
+        0;
+
+    height:
+        55px;
+
+    background:
+
+        linear-gradient(
+            transparent,
+            rgba(5, 15, 28, 0.95)
+        );
+
+}
+
+
+/* =====================================================
+   5. NÚMERO DE CARTA
+   ===================================================== */
+
+.carta__numero {
+
+    position:
+        absolute;
+
+    top:
+        10px;
+
+    left:
+        10px;
+
+    z-index:
+        7;
+
+    min-width:
+        34px;
+
+    padding:
+        6px 9px;
+
+    color:
+        white;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--morado),
+            #bd3cff
+        );
+
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.7);
+
+    border-radius:
+        10px;
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    text-align:
+        center;
+
+    box-shadow:
+        0 0 15px
+        rgba(181, 105, 255, 0.45);
+
+}
+
+
+/* =====================================================
+   6. CONTENIDO DE CARTA
+   ===================================================== */
+
+.carta__contenido {
+
+    display:
+        flex;
+
+    flex:
+        1;
+
+    flex-direction:
+        column;
+
+    padding:
+        15px;
 
 }
 
 
 .carta h3 {
 
-    min-height: 45px;
+    min-height:
+        45px;
 
-    margin-top: 5px;
+    display:
+        flex;
 
-    color: #ffd966;
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    margin-bottom:
+        13px;
+
+    color:
+        white;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.35;
+
+    text-align:
+        center;
+
+    text-transform:
+        uppercase;
 
 }
 
 
-.carta p {
+/* =====================================================
+   7. ESTADÍSTICAS
+   ===================================================== */
 
-    margin: 8px 0;
+.carta__stats {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        7px;
+
+    margin-bottom:
+        15px;
 
 }
 
+
+.stat {
+
+    padding:
+        8px 4px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(3, 13, 25, 0.8),
+            rgba(11, 31, 50, 0.8)
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+
+    border-radius:
+        8px;
+
+    text-align:
+        center;
+
+}
+
+
+.stat strong {
+
+    display:
+        block;
+
+    margin-top:
+        3px;
+
+    color:
+        white;
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        13px;
+
+}
+
+
+.stat span {
+
+    display:
+        block;
+
+    color:
+        var(--texto-secundario);
+
+    font-size:
+        11px;
+
+}
+
+
+/* =====================================================
+   8. BOTONES CARTA
+   ===================================================== */
 
 .carta button {
 
-    margin-top: 10px;
+    width:
+        100%;
+
+    margin-top:
+        auto;
+
+    color:
+        white;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #167fe6,
+            #1bb9ff
+        );
+
+    border:
+        1px solid
+        rgba(98, 200, 255, 0.45);
 
 }
 
 
-/* ==========================================
-   CARTAS SELECCIONADAS
-   ========================================== */
+.carta.seleccionada {
 
-.seleccionada {
+    border:
+        2px solid
+        var(--verde);
 
-    background-color: #315f83;
+    box-shadow:
 
-    border: 4px solid #ffd700;
+        0 15px 35px
+        rgba(0, 0, 0, 0.4),
+
+        0 0 20px
+        rgba(62, 233, 138, 0.18);
 
 }
 
 
-/* ==========================================
-   CONTADOR DE CARTAS
-   ========================================== */
+.carta.seleccionada button {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--rojo),
+            var(--rojo-oscuro)
+        );
+
+}
+
+
+/* =====================================================
+   9. CONTADOR
+   ===================================================== */
 
 #contadorCartas {
 
-    font-size: 18px;
+    display:
+        inline-flex;
 
-    font-weight: bold;
+    align-items:
+        center;
 
-    color: #ffd966;
+    margin:
+        8px 0 22px;
 
-}
+    padding:
+        9px 16px;
 
+    color:
+        #07101d;
 
-/* ==========================================
-   CAMPO DE BATALLA
-   ========================================== */
+    background:
 
-#campoBatalla {
+        linear-gradient(
+            135deg,
+            var(--dorado),
+            var(--dorado-claro)
+        );
 
-    display: flex;
+    border-radius:
+        999px;
 
-    justify-content: center;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
-    align-items: center;
+    font-size:
+        11px;
 
-    gap: 40px;
-
-    flex-wrap: wrap;
-
-    margin-top: 20px;
-
-}
-
-
-/* ==========================================
-   CARTA DEL JUGADOR Y ENEMIGO
-   ========================================== */
-
-#cartaJugador,
-#cartaEnemigo {
-
-    width: 250px;
-
-    min-height: 260px;
-
-    padding: 20px;
-
-    background-color: #234e70;
-
-    border: 4px solid #f4c430;
-
-    border-radius: 15px;
+    font-weight:
+        900;
 
 }
 
 
-#cartaJugador {
+/* =====================================================
+   10. ARENA
+   ===================================================== */
 
-    border-color: #4da6ff;
+#arenaCombate {
+
+    margin-top:
+        40px;
+
+    padding:
+        30px;
+
+    overflow:
+        hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255, 200, 61, 0.09),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 25% 50%,
+            rgba(39, 140, 255, 0.15),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 75% 50%,
+            rgba(255, 70, 85, 0.11),
+            transparent 32%
+        ),
+
+        linear-gradient(
+            145deg,
+            rgba(7, 21, 37, 0.94),
+            rgba(11, 32, 55, 0.94)
+        );
+
+    border:
+        1px solid
+        rgba(255, 200, 61, 0.25);
 
 }
 
 
-#cartaEnemigo {
+/* =====================================================
+   11. ENCABEZADO ARENA
+   ===================================================== */
 
-    border-color: #e74c3c;
+.arena-encabezado {
 
-}
+    margin-bottom:
+        28px;
 
-
-/* ==========================================
-   VIDA
-   ========================================== */
-
-#vidaJugador,
-#vidaEnemigo {
-
-    font-size: 24px;
-
-    font-weight: bold;
-
-    color: #7fff7f;
+    text-align:
+        center;
 
 }
 
 
-/* ==========================================
-   TURNO
-   ========================================== */
+.arena-etiqueta {
+
+    margin-bottom:
+        7px;
+
+    color:
+        var(--azul-neon);
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        3px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+/* =====================================================
+   12. TURNO
+   ===================================================== */
+
+.panel-turno {
+
+    width:
+        min(590px, 100%);
+
+    margin:
+        18px auto 0;
+
+    padding:
+        16px 20px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(5, 17, 31, 0.92),
+            rgba(12, 36, 59, 0.92),
+            rgba(5, 17, 31, 0.92)
+        );
+
+    border:
+        1px solid
+        rgba(98, 200, 255, 0.18);
+
+    border-radius:
+        12px;
+
+}
+
 
 #turnoActual {
 
-    font-size: 22px;
+    color:
+        var(--dorado-claro);
 
-    font-weight: bold;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
-    color: #ffd966;
+    font-size:
+        14px;
+
+    font-weight:
+        800;
 
 }
 
 
-/* ==========================================
-   ATAQUES
-   ========================================== */
+.dano-turno {
+
+    min-height:
+        34px;
+
+    margin-top:
+        7px;
+
+    color:
+        white;
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        19px;
+
+    font-weight:
+        900;
+
+}
+
+
+.dano-turno.dano-jugador {
+
+    color:
+        #58c9ff;
+
+}
+
+
+.dano-turno.dano-enemigo {
+
+    color:
+        #ff6f79;
+
+}
+
+
+.dano-turno.dano-animado {
+
+    animation:
+        aparecerDano
+        0.4s ease;
+
+}
+
+
+/* =====================================================
+   13. CAMPO BATALLA
+   ===================================================== */
+
+#campoBatalla {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(250px, 330px)
+        100px
+        minmax(250px, 330px);
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap:
+        30px;
+
+    padding:
+        36px 24px;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255, 200, 61, 0.07),
+            transparent 40%
+        ),
+
+        rgba(2, 11, 22, 0.65);
+
+    border-radius:
+        22px;
+
+}
+
+
+/* =====================================================
+   14. VS
+   ===================================================== */
+
+.versus {
+
+    width:
+        88px;
+
+    height:
+        88px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    margin:
+        auto;
+
+    color:
+        #07101d;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ffc83d,
+            #fff0a1
+        );
+
+    border:
+        5px solid
+        rgba(255, 255, 255, 0.16);
+
+    border-radius:
+        50%;
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        23px;
+
+    font-weight:
+        900;
+
+    box-shadow:
+        0 0 35px
+        rgba(255, 200, 61, 0.35);
+
+}
+
+
+/* =====================================================
+   15. CARTAS COMBATE
+   ===================================================== */
+
+.carta-combate {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    background:
+
+        linear-gradient(
+            160deg,
+            #173c5f,
+            #07192a
+        );
+
+    border:
+        2px solid transparent;
+
+    border-radius:
+        20px;
+
+    box-shadow:
+        0 22px 45px
+        rgba(0, 0, 0, 0.45);
+
+}
+
+
+.carta-combate--jugador {
+
+    border-color:
+        var(--azul-neon);
+
+}
+
+
+.carta-combate--enemigo {
+
+    border-color:
+        #ff5967;
+
+}
+
+
+.lado-carta {
+
+    position:
+        absolute;
+
+    top:
+        12px;
+
+    right:
+        12px;
+
+    z-index:
+        6;
+
+    padding:
+        6px 11px;
+
+    color:
+        white;
+
+    background:
+        rgba(3, 10, 18, 0.78);
+
+    border-radius:
+        999px;
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+
+}
+
+
+/* =====================================================
+   16. IMÁGENES COMBATE
+   ===================================================== */
+
+.carta-combate__imagen {
+
+    width:
+        100%;
+
+    height:
+        270px;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+
+    object-position:
+        center;
+
+}
+
+
+/* =====================================================
+   17. CONTENIDO COMBATE
+   ===================================================== */
+
+.carta-combate__contenido {
+
+    padding:
+        18px;
+
+}
+
+
+.carta-combate__contenido h3 {
+
+    margin-bottom:
+        15px;
+
+    color:
+        white;
+
+    font-size:
+        17px;
+
+    text-align:
+        center;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+/* =====================================================
+   18. ESTADÍSTICAS COMBATE
+   ===================================================== */
+
+.estadisticas-combate {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        10px;
+
+    margin-bottom:
+        17px;
+
+}
+
+
+.estadistica-combate {
+
+    padding:
+        11px;
+
+    background:
+        rgba(3, 13, 25, 0.66);
+
+    border-radius:
+        10px;
+
+    text-align:
+        center;
+
+}
+
+
+.estadistica-combate span {
+
+    display:
+        block;
+
+    color:
+        var(--texto-secundario);
+
+    font-size:
+        12px;
+
+}
+
+
+.estadistica-combate strong {
+
+    display:
+        block;
+
+    margin-top:
+        4px;
+
+    color:
+        white;
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+}
+
+
+/* =====================================================
+   19. VIDA
+   ===================================================== */
+
+.vida-info {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        8px;
+
+    font-weight:
+        700;
+
+}
+
+
+.vida-info span:last-child {
+
+    color:
+        var(--verde);
+
+}
+
+
+.barra-vida {
+
+    height:
+        14px;
+
+    overflow:
+        hidden;
+
+    background:
+        #030a13;
+
+    border-radius:
+        999px;
+
+}
+
+
+.barra-vida__relleno {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #20c968,
+            #68f5a1
+        );
+
+    border-radius:
+        inherit;
+
+    transition:
+        width
+        0.4s ease;
+
+}
+
+
+.barra-vida__relleno.barra-vida--peligro {
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #cf2637,
+            #ff5967
+        );
+
+}
+
+
+/* =====================================================
+   20. ATAQUE
+   ===================================================== */
 
 #ataques {
 
-    margin-top: 25px;
+    margin-top:
+        28px;
+
+    text-align:
+        center;
+
+}
+
+
+#ataques h3 {
+
+    margin-bottom:
+        12px;
 
 }
 
 
 #btnAtacar {
 
-    font-size: 18px;
+    min-width:
+        230px;
 
-    background-color: #c0392b;
+    padding:
+        15px 30px;
+
+    color:
+        white;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ff4655,
+            #b81433
+        );
+
+    border:
+        1px solid
+        #ff7480;
+
+    box-shadow:
+        0 10px 25px
+        rgba(255, 70, 85, 0.23);
 
 }
 
 
-#btnAtacar:hover {
+/* =====================================================
+   21. ANIMACIONES BATALLA
+   ===================================================== */
 
-    background-color: #922b21;
+.carta-combate.atacando-jugador {
+
+    animation:
+        atacarJugador
+        0.38s ease;
 
 }
 
 
-/* ==========================================
-   VENTANA DE RESULTADO
-   ========================================== */
+.carta-combate.atacando-enemigo {
+
+    animation:
+        atacarEnemigo
+        0.38s ease;
+
+}
+
+
+.carta-combate.recibiendo-golpe {
+
+    animation:
+        recibirGolpe
+        0.38s ease;
+
+}
+
+
+/* =====================================================
+   22. VENTANA VICTORIA / DERROTA
+   ===================================================== */
+
+/*
+    IMPORTANTE:
+
+    El elemento ocupa la pantalla actual del usuario.
+
+    Como batalla.js utiliza:
+
+    ventanaResultado.style.display = "block";
+
+    mantenemos display block y centramos
+    el contenido con position absolute.
+
+    Así NO tenemos que modificar JavaScript.
+*/
 
 .ventanaResultado {
 
-    display: none;
+    display:
+        none;
 
-    position: fixed;
+    position:
+        fixed;
 
-    top: 0;
-    left: 0;
+    inset:
+        0;
 
-    width: 100%;
-    height: 100%;
+    z-index:
+        1000;
 
-    background-color: rgba(0, 0, 0, 0.75);
+    background:
+        rgba(1, 7, 15, 0.62);
 
-    z-index: 1000;
+    backdrop-filter:
+        blur(6px);
 
 }
 
 
-/* ==========================================
-   CONTENIDO DEL RESULTADO
-   ========================================== */
+/* =====================================================
+   23. CONTENIDO RESULTADO
+   ===================================================== */
 
 .contenidoResultado {
 
-    width: 350px;
+    position:
+        absolute;
 
-    margin: 140px auto;
+    top:
+        50%;
 
-    padding: 30px;
+    left:
+        50%;
 
-    background-color: #f2f2f2;
+    transform:
+        translate(-50%, -50%);
 
-    color: #102a43;
+    width:
+        min(
+            460px,
+            calc(100% - 30px)
+        );
 
-    border: 5px solid #f4c430;
+    margin:
+        0;
 
-    border-radius: 15px;
+    padding:
+        40px 34px;
 
-    text-align: center;
+    overflow:
+        hidden;
+
+    color:
+        white;
+
+    background:
+
+        radial-gradient(
+            circle at top,
+            rgba(0, 217, 255, 0.16),
+            transparent 45%
+        ),
+
+        linear-gradient(
+            160deg,
+            rgba(21, 58, 91, 0.98),
+            rgba(5, 20, 35, 0.99)
+        );
+
+    border:
+        2px solid
+        var(--dorado);
+
+    border-radius:
+        24px;
+
+    text-align:
+        center;
+
+    box-shadow:
+
+        0 35px 85px
+        rgba(0, 0, 0, 0.75),
+
+        0 0 45px
+        rgba(255, 200, 61, 0.16),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.08);
+
+    animation:
+        aparecerResultado
+        0.45s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
 
 }
 
 
+/* Línea superior */
+
+.contenidoResultado::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        15%;
+
+    width:
+        70%;
+
+    height:
+        3px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--dorado),
+            var(--azul-neon),
+            var(--dorado),
+            transparent
+        );
+
+    box-shadow:
+        0 0 18px
+        rgba(255, 200, 61, 0.55);
+
+}
+
+
+/* Brillo detrás */
+
+.contenidoResultado::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        260px;
+
+    height:
+        260px;
+
+    left:
+        50%;
+
+    top:
+        -180px;
+
+    transform:
+        translateX(-50%);
+
+    z-index:
+        -1;
+
+    border-radius:
+        50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255, 200, 61, 0.28),
+            transparent 70%
+        );
+
+}
+
+
+/* =====================================================
+   24. TEXTO RESULTADO
+   ===================================================== */
+
 .contenidoResultado h2 {
 
-    margin-top: 0;
+    margin-bottom:
+        14px;
 
-    color: #1e3a5f;
+    color:
+        white;
 
-    font-size: 32px;
+    font-size:
+        36px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+
+    text-shadow:
+
+        0 0 15px
+        rgba(255, 200, 61, 0.32);
 
 }
 
 
 .contenidoResultado p {
 
-    color: #102a43;
+    color:
+        var(--texto-secundario);
 
 }
 
-
-/* ==========================================
-   MARCADOR FINAL
-   ========================================== */
 
 #marcadorResultado {
 
-    font-size: 40px;
+    margin:
+        20px 0;
 
-    font-weight: bold;
+    color:
+        var(--dorado-claro);
 
-    color: #c0392b;
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        52px;
+
+    font-weight:
+        900;
+
+    text-shadow:
+
+        0 0 20px
+        rgba(255, 200, 61, 0.32);
 
 }
 
 
-/* ==========================================
-   HISTORIAL
-   ========================================== */
+/* =====================================================
+   25. HISTORIAL
+   ===================================================== */
 
 #historialBatallas {
 
-    margin-top: 20px;
+    display:
+        grid;
+
+    grid-template-columns:
+
+        repeat(
+            auto-fit,
+            minmax(260px, 1fr)
+        );
+
+    gap:
+        18px;
 
 }
 
 
-/* ==========================================
-   TARJETAS DEL HISTORIAL
-   ========================================== */
-
 .batallaHistorial {
 
-    width: 320px;
+    position:
+        relative;
 
-    margin: 15px auto;
+    padding:
+        20px;
 
-    padding: 18px;
+    overflow:
+        hidden;
 
-    background-color: #234e70;
+    background:
 
-    border: 3px solid #f4c430;
+        linear-gradient(
+            145deg,
+            #153753,
+            #071b2d
+        );
 
-    border-radius: 10px;
+    border:
+        1px solid
+        rgba(98, 200, 255, 0.14);
+
+    border-radius:
+        14px;
+
+    box-shadow:
+        0 12px 28px
+        rgba(0, 0, 0, 0.3);
+
+}
+
+
+.batallaHistorial::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    top:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        4px;
+
+    background:
+
+        linear-gradient(
+            var(--azul-neon),
+            var(--morado)
+        );
 
 }
 
 
 .batallaHistorial h3 {
 
-    margin-top: 0;
-
-    color: #ffd966;
+    margin-bottom:
+        13px;
 
 }
 
 
 .batallaHistorial p {
 
-    margin: 6px;
+    margin:
+        6px 0;
+
+    color:
+        var(--texto-secundario);
 
 }
 
 
-/* ==========================================
-   BOTÓN VOLVER
-   ========================================== */
+.batallaHistorial strong {
 
-#btnVolverArena {
+    color:
+        white;
 
-    margin-top: 20px;
+}
+
+
+/* =====================================================
+   26. ANIMACIONES
+   ===================================================== */
+
+@keyframes aparecerDano {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            scale(0.65);
+
+    }
+
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes atacarJugador {
+
+    0% {
+
+        transform:
+            translateX(0);
+
+    }
+
+
+    50% {
+
+        transform:
+            translateX(32px)
+            scale(1.035);
+
+    }
+
+
+    100% {
+
+        transform:
+            translateX(0);
+
+    }
+
+}
+
+
+@keyframes atacarEnemigo {
+
+    0% {
+
+        transform:
+            translateX(0);
+
+    }
+
+
+    50% {
+
+        transform:
+            translateX(-32px)
+            scale(1.035);
+
+    }
+
+
+    100% {
+
+        transform:
+            translateX(0);
+
+    }
+
+}
+
+
+@keyframes recibirGolpe {
+
+    0%,
+    100% {
+
+        transform:
+            translateX(0);
+
+        filter:
+            brightness(1);
+
+    }
+
+
+    25% {
+
+        transform:
+            translateX(-8px);
+
+        filter:
+            brightness(1.8);
+
+    }
+
+
+    50% {
+
+        transform:
+            translateX(8px);
+
+    }
+
+
+    75% {
+
+        transform:
+            translateX(-5px);
+
+    }
+
+}
+
+
+/* NUEVA ANIMACIÓN DE RESULTADO */
+
+@keyframes aparecerResultado {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.72);
+
+    }
+
+
+    60% {
+
+        opacity:
+            1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.04);
+
+    }
+
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+    }
+
+}
+
+
+/* =====================================================
+   27. RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 850px) {
+
+    #campoBatalla {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            22px;
+
+    }
+
+
+    .versus {
+
+        width:
+            70px;
+
+        height:
+            70px;
+
+        font-size:
+            18px;
+
+    }
+
+
+    .carta-combate {
+
+        width:
+            min(
+                100%,
+                360px
+            );
+
+        margin:
+            0 auto;
+
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    #cartasDisponibles,
+    #mazoJugador {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .carta {
+
+        width:
+            min(
+                100%,
+                350px
+            );
+
+        margin:
+            0 auto;
+
+    }
+
+
+    .carta__imagen-wrapper {
+
+        height:
+            230px;
+
+    }
+
+
+    #arenaCombate {
+
+        padding:
+            18px 12px;
+
+    }
+
+
+    #campoBatalla {
+
+        padding:
+            22px 12px;
+
+    }
+
+
+    .carta-combate__imagen {
+
+        height:
+            250px;
+
+    }
+
+
+    #btnAtacar {
+
+        width:
+            100%;
+
+    }
+
+
+    .contenidoResultado {
+
+        padding:
+            30px 20px;
+
+    }
+
+
+    .contenidoResultado h2 {
+
+        font-size:
+            28px;
+
+    }
+
+
+    #marcadorResultado {
+
+        font-size:
+            42px;
+
+    }
 
 }

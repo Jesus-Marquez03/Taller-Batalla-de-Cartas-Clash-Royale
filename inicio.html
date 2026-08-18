@@ -1,69 +1,156 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Clash Royale</title>
 
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/componentes.css">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <script type="module" src="./js/app.js"></script>
+    <title>
+        Preparación del Jugador - Card Battle
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="./css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="./css/componentes.css"
+    >
+
+    <script
+        type="module"
+        src="./js/app.js"
+    ></script>
+
 </head>
+
+
 <body>
-    
-    <main>
 
-        <h1>Preparacion del Jugador</h1>
+    <main class="panel-juego--compacto">
 
-        <p>Ingresa tu nombre o tu alias:</p>
+        <header class="encabezado-juego">
 
-        <input 
-            type="text"
-            id="nombreJugador"
-            placeholder="Escribe tu nombre o alias"        
-        >
+            <div class="logo-badge">
+                Preparación
+            </div>
 
-        <h2>Elige tu clase</h2>
+            <h1>
+                Tu Guerrero
+            </h1>
 
-        <div id="clases">
-            <button class="clase" data-clase="Astuto">
-                Astuto
-            </button>
+            <p class="subtitulo">
+                Crea tu identidad antes de entrar
+                a la arena.
+            </p>
 
-            <button class="clase" data-clase="Astuto">
-                Temerario
-            </button>
+        </header>
 
-            <button class="clase" data-clase="Astuto">
-                Cauteloso
-            </button>
 
-            <button class="clase" data-clase="Astuto">
-                Velocista
-            </button>
+        <section>
 
-            <button class="clase" data-clase="Astuto">
-                Ser de sombra
-            </button>
+            <div class="grupo-campo">
 
-        </div>
+                <label for="nombreJugador">
+                    Nombre o alias
+                </label>
 
-        <p id="descripcionClase">
-            Selecciona una clase para conocer su estilo.
-        </p>
+                <input
+                    type="text"
+                    id="nombreJugador"
+                    maxlength="20"
+                    placeholder="Ejemplo: DarkKnight"
+                    autocomplete="off"
+                >
 
-        <p id="claseSeleccionada">
-            Clase seleccionada: Ninguna
-        </p>
+            </div>
 
-        <p id="mensaje"></p>
 
-        <button id="btnContinuar">
-            Continuar
-        </button>
+            <h2>
+                Elige tu clase
+            </h2>
+
+
+            <div id="clases">
+
+                <button
+                    class="clase"
+                    data-clase="Astuto"
+                >
+                    🧠 Astuto
+                </button>
+
+
+                <button
+                    class="clase"
+                    data-clase="Temerario"
+                >
+                    🔥 Temerario
+                </button>
+
+
+                <button
+                    class="clase"
+                    data-clase="Cauteloso"
+                >
+                    🛡️ Cauteloso
+                </button>
+
+
+                <button
+                    class="clase"
+                    data-clase="Velocista"
+                >
+                    ⚡ Velocista
+                </button>
+
+
+                <button
+                    class="clase"
+                    data-clase="Ser de sombra"
+                >
+                    🌑 Ser de sombra
+                </button>
+
+            </div>
+
+
+            <p id="descripcionClase">
+                Selecciona una clase para conocer
+                su estilo.
+            </p>
+
+
+            <p id="claseSeleccionada">
+                Clase seleccionada: Ninguna
+            </p>
+
+
+            <p id="mensaje"></p>
+
+
+            <div class="acciones-principales">
+
+                <button
+                    id="btnContinuar"
+                    type="button"
+                >
+                    Continuar a la Arena
+                </button>
+
+            </div>
+
+        </section>
 
     </main>
-    
+
 </body>
+
 </html>

@@ -4,9 +4,22 @@
 
 function guardarBatalla(resultado, marcador) {
 
+    const nombreJugador =
+        sessionStorage.getItem("jugadorNombre") ||
+        "Jugador";
+
+
+    const claseJugador =
+        sessionStorage.getItem("jugadorClase") ||
+        "Sin clase";
+
+
     const batalla = {
         resultado: resultado,
-        marcador: marcador
+        marcador: marcador,
+        jugador: nombreJugador,
+        clase: claseJugador,
+        fecha: new Date().toLocaleString("es-CO")
     };
 
 
@@ -63,20 +76,12 @@ function mostrarHistorial() {
     historialContenedor.innerHTML = "";
 
 
-    // ==========================================
-    // HISTORIAL VACÍO
-    // ==========================================
-
     if (historialBatallas.length === 0) {
 
         historialContenedor.innerHTML =
             "<p>No hay batallas registradas.</p>";
 
     } else {
-
-        // ==========================================
-        // MOSTRAR BATALLAS
-        // ==========================================
 
         for (
             let i = 0;
@@ -96,15 +101,38 @@ function mostrarHistorial() {
                 "batallaHistorial";
 
 
+            const resultadoTexto =
+                batalla.resultado === "victoria"
+                    ? "Victoria"
+                    : "Derrota";
+
+
             tarjeta.innerHTML = `
                 <h3>Batalla ${i + 1}</h3>
 
                 <p>
-                    Resultado: ${batalla.resultado}
+                    Jugador:
+                    <strong>${batalla.jugador || "Jugador"}</strong>
                 </p>
 
                 <p>
-                    Marcador: ${batalla.marcador}
+                    Clase:
+                    <strong>${batalla.clase || "Sin clase"}</strong>
+                </p>
+
+                <p>
+                    Resultado:
+                    <strong>${resultadoTexto}</strong>
+                </p>
+
+                <p>
+                    Marcador:
+                    <strong>${batalla.marcador}</strong>
+                </p>
+
+                <p>
+                    Fecha:
+                    <strong>${batalla.fecha || "Sin registro"}</strong>
                 </p>
             `;
 
@@ -117,10 +145,6 @@ function mostrarHistorial() {
 
     }
 
-
-    // ==========================================
-    // VOLVER A LA ARENA
-    // ==========================================
 
     if (btnVolverArena) {
 
@@ -138,10 +162,6 @@ function mostrarHistorial() {
 
 }
 
-
-// ==========================================
-// EXPORTAR
-// ==========================================
 
 export {
     guardarBatalla,

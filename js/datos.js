@@ -5,7 +5,8 @@ const cartas = [
         nombre: "Caballero",
         vida: 120,
         ataque: 25,
-        defensa: 15
+        defensa: 15,
+        imagen: "./assets/img/caballero.png"
     },
 
     {
@@ -13,7 +14,8 @@ const cartas = [
         nombre: "Arquera",
         vida: 80,
         ataque: 30,
-        defensa: 8
+        defensa: 8,
+        imagen: "./assets/img/arquera.png"
     },
 
     {
@@ -21,7 +23,8 @@ const cartas = [
         nombre: "Gigante",
         vida: 180,
         ataque: 20,
-        defensa: 20
+        defensa: 20,
+        imagen: "./assets/img/gigante.png"
     },
 
     {
@@ -29,7 +32,8 @@ const cartas = [
         nombre: "Mago",
         vida: 90,
         ataque: 40,
-        defensa: 10
+        defensa: 10,
+        imagen: "./assets/img/mago.png"
     },
 
     {
@@ -37,7 +41,8 @@ const cartas = [
         nombre: "Mini P.E.K.K.A",
         vida: 100,
         ataque: 50,
-        defensa: 12
+        defensa: 12,
+        imagen: "./assets/img/mini-pekka.png"
     },
 
     {
@@ -45,7 +50,8 @@ const cartas = [
         nombre: "Príncipe",
         vida: 130,
         ataque: 45,
-        defensa: 15
+        defensa: 15,
+        imagen: "./assets/img/principe.png"
     },
 
     {
@@ -53,7 +59,8 @@ const cartas = [
         nombre: "Mosquetera",
         vida: 95,
         ataque: 38,
-        defensa: 10
+        defensa: 10,
+        imagen: "./assets/img/mosquetera.png"
     },
 
     {
@@ -61,7 +68,8 @@ const cartas = [
         nombre: "Valquiria",
         vida: 140,
         ataque: 30,
-        defensa: 18
+        defensa: 18,
+        imagen: "./assets/img/valquiria.png"
     },
 
     {
@@ -69,7 +77,8 @@ const cartas = [
         nombre: "Esbirros",
         vida: 70,
         ataque: 28,
-        defensa: 6
+        defensa: 6,
+        imagen: "./assets/img/esbirros.png"
     },
 
     {
@@ -77,7 +86,8 @@ const cartas = [
         nombre: "Bombardero",
         vida: 75,
         ataque: 35,
-        defensa: 7
+        defensa: 7,
+        imagen: "./assets/img/bombardero.png"
     },
 
     {
@@ -85,7 +95,8 @@ const cartas = [
         nombre: "Bruja",
         vida: 100,
         ataque: 32,
-        defensa: 12
+        defensa: 12,
+        imagen: "./assets/img/bruja.png"
     },
 
     {
@@ -93,7 +104,8 @@ const cartas = [
         nombre: "Golem",
         vida: 220,
         ataque: 15,
-        defensa: 25
+        defensa: 25,
+        imagen: "./assets/img/golem.png"
     },
 
     {
@@ -101,7 +113,8 @@ const cartas = [
         nombre: "Dragón Bebé",
         vida: 110,
         ataque: 35,
-        defensa: 14
+        defensa: 14,
+        imagen: "./assets/img/dragon-bebe.png"
     },
 
     {
@@ -109,7 +122,8 @@ const cartas = [
         nombre: "Torre Infernal",
         vida: 150,
         ataque: 42,
-        defensa: 22
+        defensa: 22,
+        imagen: "./assets/img/torre-infernal.png"
     },
 
     {
@@ -117,7 +131,8 @@ const cartas = [
         nombre: "Espíritu de Fuego",
         vida: 60,
         ataque: 45,
-        defensa: 5
+        defensa: 5,
+        imagen: "./assets/img/espiritu-de-fuego.png"
     },
 
     {
@@ -125,7 +140,8 @@ const cartas = [
         nombre: "Leñador",
         vida: 105,
         ataque: 48,
-        defensa: 10
+        defensa: 10,
+        imagen: "./assets/img/lenador.png"
     },
 
     {
@@ -133,7 +149,8 @@ const cartas = [
         nombre: "Bandida",
         vida: 90,
         ataque: 44,
-        defensa: 9
+        defensa: 9,
+        imagen: "./assets/img/bandida.png"
     },
 
     {
@@ -141,7 +158,8 @@ const cartas = [
         nombre: "Megacaballero",
         vida: 200,
         ataque: 40,
-        defensa: 25
+        defensa: 25,
+        imagen: "./assets/img/megacaballero.png"
     },
 
     {
@@ -149,7 +167,8 @@ const cartas = [
         nombre: "Ejército de Esqueletos",
         vida: 65,
         ataque: 38,
-        defensa: 5
+        defensa: 5,
+        imagen: "./assets/img/ejercito-de-esqueletos.png"
     },
 
     {
@@ -157,7 +176,8 @@ const cartas = [
         nombre: "Lanzarrocas",
         vida: 125,
         ataque: 34,
-        defensa: 18
+        defensa: 18,
+        imagen: "./assets/img/lanzarrocas.png"
     }
 
 ];

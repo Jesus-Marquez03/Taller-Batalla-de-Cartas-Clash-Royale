@@ -1,138 +1,413 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arena de Batalla - Clash Royale</title>
 
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/componentes.css">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <script type="module" src="./js/app.js"></script>
+    <title>
+        Arena de Batalla - Card Battle
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="./css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="./css/componentes.css"
+    >
+
+    <script
+        type="module"
+        src="./js/app.js"
+    ></script>
+
 </head>
 
+
 <body>
-    
+
     <main>
 
-        <h1>Arena de Batalla</h1>
+        <header class="encabezado-juego">
+
+            <div class="logo-badge">
+                Arena Principal
+            </div>
+
+            <h1>
+                Arena de Batalla
+            </h1>
+
+            <p class="subtitulo">
+                Elige exactamente 5 cartas.
+                Después enfréntate al mazo de la IA.
+            </p>
+
+        </header>
+
+
+        <!-- ==========================================
+             INFORMACIÓN DEL JUGADOR
+             ========================================== -->
+
+        <div class="perfil-jugador">
+
+            <p>
+                Jugador:
+                <strong id="nombreArena">
+                    Jugador
+                </strong>
+            </p>
+
+
+            <p>
+                Clase:
+                <strong id="claseArena">
+                    Sin clase
+                </strong>
+            </p>
+
+
+            <!-- NUEVO BOTÓN -->
+
+            <button
+                id="btnCambiarJugador"
+                class="boton-secundario"
+                type="button"
+            >
+                🔄 Cambiar jugador
+            </button>
+
+        </div>
+
+
+        <!-- ==========================================
+             MAZO DEL JUGADOR
+             ========================================== -->
 
         <section>
 
-            <h2>Mazo de Batalla</h2>
+            <div class="seccion-cabecera">
 
-            <p>
-                !Elige 5 cartas para crear tu mazo y luchar!
-            </p>
+                <h2>
+                    Tu mazo de batalla
+                </h2>
+
+                <p>
+                    Selecciona tus mejores 5 cartas
+                    o crea un mazo al azar.
+                </p>
+
+            </div>
+
 
             <p id="contadorCartas">
                 Cartas seleccionadas: 0/5
             </p>
 
+
             <div id="mazoJugador"></div>
 
-            <button id="btnMazoAzar">
-                Mazo al azar
-            </button>
+
+            <div class="acciones-mazo">
+
+                <button
+                    id="btnMazoAzar"
+                    type="button"
+                >
+                    🎲 Mazo al azar
+                </button>
+
+            </div>
 
         </section>
 
+
+        <!-- ==========================================
+             CARTAS DISPONIBLES
+             ========================================== -->
+
         <section>
 
-            <h2>Cartas disponibles</h2>
+            <div class="seccion-cabecera">
+
+                <h2>
+                    Cartas disponibles
+                </h2>
+
+                <p>
+                    Cada carta tiene vida,
+                    ataque y defensa.
+                </p>
+
+            </div>
+
 
             <div id="cartasDisponibles"></div>
 
         </section>
 
+
         <p id="mensajeBatalla"></p>
 
-        <button id="btnIrLuchar">
-            Ir a luchar
-        </button>
+
+        <div class="acciones-principales">
+
+            <button
+                id="btnIrLuchar"
+                type="button"
+            >
+                ⚔️ Ir a luchar
+            </button>
+
+        </div>
+
+
+        <!-- ==========================================
+             ARENA DE COMBATE
+             ========================================== -->
 
         <section id="arenaCombate">
 
-            <h2> Arena de Combate </h2>
+            <div class="arena-encabezado">
 
-            <p id="turnoActual">
-                Turno del jugador
-            </p>
+                <p class="arena-etiqueta">
+                    Duelo activo
+                </p>
+
+                <h2>
+                    Arena de Combate
+                </h2>
+
+
+                <div class="panel-turno">
+
+                    <p id="turnoActual">
+                        Turno del jugador
+                    </p>
+
+                    <p
+                        id="danoTurno"
+                        class="dano-turno"
+                    >
+                        Prepárate para atacar
+                    </p>
+
+                </div>
+
+            </div>
+
 
             <div id="campoBatalla">
 
-                <div id="cartaJugador">
+                <!-- ==========================================
+                     CARTA DEL JUGADOR
+                     ========================================== -->
 
-                    <h3>Tu carta</h3>
+                <article
+                    id="cartaJugador"
+                    class="carta-combate carta-combate--jugador"
+                >
 
-                    <div id="datosCartaJugador"></div>
+                    <span class="lado-carta">
+                        TÚ
+                    </span>
 
-                    <p>
-                        Vida:
-                        <span id="vidaJugador">0</span>
-                    </p>
 
+                    <img
+                        id="imagenCartaJugador"
+                        class="carta-combate__imagen"
+                        src=""
+                        alt="Carta del jugador"
+                    >
+
+
+                    <div class="carta-combate__contenido">
+
+                        <h3 id="nombreCartaJugador">
+                            Tu carta
+                        </h3>
+
+
+                        <div
+                            id="datosCartaJugador"
+                            class="estadisticas-combate"
+                        ></div>
+
+
+                        <div class="vida-info">
+
+                            <span>
+                                ❤️ Vida
+                            </span>
+
+                            <span id="vidaJugador">
+                                0
+                            </span>
+
+                        </div>
+
+
+                        <div class="barra-vida">
+
+                            <div
+                                id="barraVidaJugador"
+                                class="barra-vida__relleno"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ==========================================
+                     VS
+                     ========================================== -->
+
+                <div class="versus">
+                    VS
                 </div>
 
-                <div id="cartaEnemigo">
 
-                    <h3>Carta enemiga</h3>
+                <!-- ==========================================
+                     CARTA DE LA IA
+                     ========================================== -->
 
-                    <div id="datosCartaEnemigo"></div>
+                <article
+                    id="cartaEnemigo"
+                    class="carta-combate carta-combate--enemigo"
+                >
 
-                    <p>
-                        Vida:
-                        <span id="vidaEnemigo">0</span>
-                    </p>
+                    <span class="lado-carta">
+                        IA
+                    </span>
 
-                </div>
+
+                    <img
+                        id="imagenCartaEnemigo"
+                        class="carta-combate__imagen"
+                        src=""
+                        alt="Carta enemiga"
+                    >
+
+
+                    <div class="carta-combate__contenido">
+
+                        <h3 id="nombreCartaEnemigo">
+                            Carta enemiga
+                        </h3>
+
+
+                        <div
+                            id="datosCartaEnemigo"
+                            class="estadisticas-combate"
+                        ></div>
+
+
+                        <div class="vida-info">
+
+                            <span>
+                                ❤️ Vida
+                            </span>
+
+                            <span id="vidaEnemigo">
+                                0
+                            </span>
+
+                        </div>
+
+
+                        <div class="barra-vida">
+
+                            <div
+                                id="barraVidaEnemigo"
+                                class="barra-vida__relleno"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </article>
 
             </div>
+
+
+            <!-- ==========================================
+                 BOTÓN DE ATAQUE
+                 ========================================== -->
 
             <div id="ataques">
 
-                <h3>Elige tu ataque</h3>
+                <h3>
+                    Tu acción
+                </h3>
 
-                <button id="btnAtacar">
-                    Atacar
+
+                <button
+                    id="btnAtacar"
+                    type="button"
+                >
+                    ⚔️ Atacar
                 </button>
 
             </div>
+
 
             <p id="mensajeCombate"></p>
 
         </section>
 
-    <!-- ==========================================
-     VENTANA DE RESULTADO
-     ========================================== -->
 
-    <div id="ventanaResultado" class="ventanaResultado">
+        <!-- ==========================================
+             VENTANA DE RESULTADO
+             ========================================== -->
 
-        <div class="contenidoResultado">
+        <div
+            id="ventanaResultado"
+            class="ventanaResultado"
+        >
 
-            <h2 id="tituloResultado">
-                Resultado
-            </h2>
+            <div class="contenidoResultado">
 
-            <p id="marcadorResultado">
-                0 - 0
-            </p>
+                <h2 id="tituloResultado">
+                    Resultado
+                </h2>
 
-            <p id="mensajeResultado">
-                Resultado de la batalla
-            </p>
 
-            <button id="btnContinuar">
-                Continuar
-            </button>
+                <p id="marcadorResultado">
+                    0 - 0
+                </p>
+
+
+                <p id="mensajeResultado">
+                    Resultado de la batalla
+                </p>
+
+
+                <button
+                    id="btnContinuar"
+                    type="button"
+                >
+                    Ver historial
+                </button>
+
+            </div>
 
         </div>
 
-    </div>
-    
     </main>
-    
-</body>
-</html>
 
+</body>
+
+</html>

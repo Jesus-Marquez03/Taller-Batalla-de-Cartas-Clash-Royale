@@ -11,20 +11,23 @@
     >
 
     <title>
-        Historial de Batallas - Clash Royale
+        Historial de Batallas - Card Battle
     </title>
-
 
     <link
         rel="stylesheet"
         href="./css/style.css"
     >
 
-
     <link
         rel="stylesheet"
         href="./css/componentes.css"
     >
+
+    <script
+        type="module"
+        src="./js/app.js"
+    ></script>
 
 </head>
 
@@ -33,21 +36,33 @@
 
     <main>
 
-        <h1>
-            Historial de Batallas
-        </h1>
+        <header class="encabezado-juego">
 
+            <div class="logo-badge">
+                Registro
+            </div>
 
-        <p>
-            Aquí puedes consultar las batallas que has jugado.
-        </p>
+            <h1>
+                Historial
+            </h1>
+
+            <p class="subtitulo">
+                Revisa los resultados de tus
+                combates anteriores.
+            </p>
+
+        </header>
 
 
         <section>
 
-            <h2>
-                Batallas anteriores
-            </h2>
+            <div class="seccion-cabecera">
+
+                <h2>
+                    Batallas anteriores
+                </h2>
+
+            </div>
 
 
             <div id="historialBatallas"></div>
@@ -55,17 +70,18 @@
         </section>
 
 
-        <button id="btnVolverArena">
-            Volver a la Arena
-        </button>
+        <div class="acciones-principales">
+
+            <button
+                id="btnVolverArena"
+                type="button"
+            >
+                ← Volver a la Arena
+            </button>
+
+        </div>
 
     </main>
-
-
-    <script
-        type="module"
-        src="./js/app.js"
-    ></script>
 
 </body>
 

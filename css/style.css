@@ -1,208 +1,1196 @@
-/* ==========================================
-   ESTILOS GENERALES
-   ========================================== */
+/* =====================================================
+   CARD BATTLE - ESTILOS GENERALES
+   ===================================================== */
+
+
+/* =====================================================
+   1. FUENTES
+   ===================================================== */
+
+@import url(
+    'https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap'
+);
+
+
+/* =====================================================
+   2. VARIABLES
+   ===================================================== */
+
+:root {
+
+    /* Fondos */
+    --fondo-oscuro: #050912;
+    --fondo-principal: #08111f;
+    --fondo-secundario: #0d1b2f;
+
+    /* Paneles */
+    --panel: rgba(12, 27, 48, 0.92);
+    --panel-claro: rgba(20, 45, 75, 0.92);
+    --panel-transparente: rgba(8, 20, 36, 0.78);
+
+    /* Colores principales */
+    --azul: #278cff;
+    --azul-claro: #62c8ff;
+    --azul-neon: #00d9ff;
+
+    --morado: #7d3cff;
+    --morado-claro: #b569ff;
+
+    --dorado: #ffc83d;
+    --dorado-claro: #ffe48d;
+
+    --rojo: #ff4655;
+    --rojo-oscuro: #c7223d;
+
+    --verde: #3ee98a;
+
+    /* Texto */
+    --texto: #f4f8ff;
+    --texto-secundario: #a9bfd7;
+    --texto-oscuro: #07101d;
+
+    /* Bordes */
+    --borde-suave: rgba(255, 255, 255, 0.08);
+    --borde-dorado: rgba(255, 200, 61, 0.42);
+    --borde-azul: rgba(39, 140, 255, 0.4);
+
+    /* Sombras */
+    --sombra-panel:
+        0 20px 55px rgba(0, 0, 0, 0.48);
+
+    --sombra-azul:
+        0 0 22px rgba(0, 217, 255, 0.22);
+
+    --sombra-dorada:
+        0 0 25px rgba(255, 200, 61, 0.18);
+
+    /* Radio */
+    --radio-grande: 22px;
+    --radio-medio: 14px;
+}
+
+
+/* =====================================================
+   3. RESET
+   ===================================================== */
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
 }
 
 
 body {
 
-    margin: 0;
+    position: relative;
 
-    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
 
-    background-color: #102a43;
+    overflow-x: hidden;
 
-    color: white;
+    color: var(--texto);
+
+    font-family:
+        "Rajdhani",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background-color:
+        var(--fondo-oscuro);
+
+}
+
+
+/* =====================================================
+   4. FONDO DE ARENA
+   ===================================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -2;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(
+            rgba(3, 9, 18, 0.62),
+            rgba(3, 10, 20, 0.78)
+        ),
+
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(0, 217, 255, 0.18),
+            transparent 34%
+        ),
+
+        radial-gradient(
+            circle at 80% 25%,
+            rgba(125, 60, 255, 0.14),
+            transparent 32%
+        ),
+
+        url("../assets/img/arena-fondo.png");
+
+    background-size:
+        cover;
+
+    background-position:
+        center;
+
+    background-repeat:
+        no-repeat;
+
+    background-attachment:
+        fixed;
+
+    filter:
+        saturate(0.92)
+        contrast(1.05);
+
+}
+
+
+/* Capa azul oscura encima de la arena */
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -1;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(
+            rgba(255, 255, 255, 0.018) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.018) 1px,
+            transparent 1px
+        ),
+
+        radial-gradient(
+            circle at top,
+            rgba(0, 217, 255, 0.11),
+            transparent 32%
+        ),
+
+        linear-gradient(
+            180deg,
+            rgba(4, 11, 22, 0.15),
+            rgba(4, 11, 22, 0.48)
+        );
+
+    background-size:
+        50px 50px,
+        50px 50px,
+        auto,
+        auto;
+
+}
+
+
+/* =====================================================
+   5. CONTENEDOR PRINCIPAL
+   ===================================================== */
+
+main {
+
+    position: relative;
+
+    width: min(
+        1250px,
+        calc(100% - 36px)
+    );
+
+    margin: 34px auto;
+
+    padding: 32px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(13, 29, 50, 0.90),
+            rgba(5, 15, 29, 0.94)
+        );
+
+    border:
+        1px solid
+        rgba(98, 200, 255, 0.20);
+
+    border-radius:
+        26px;
+
+    box-shadow:
+
+        var(--sombra-panel),
+
+        0 0 50px
+        rgba(0, 0, 0, 0.25),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.05);
+
+    backdrop-filter:
+        blur(10px);
+
+}
+
+
+/* Línea gamer superior */
+
+main::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 12%;
+
+    width: 76%;
+
+    height: 3px;
+
+    border-radius:
+        0 0 10px 10px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--azul-neon),
+            var(--morado-claro),
+            transparent
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(0, 217, 255, 0.5);
+
+}
+
+
+.panel-juego--compacto {
+
+    max-width: 900px;
+
+}
+
+
+/* =====================================================
+   6. ENCABEZADO
+   ===================================================== */
+
+.encabezado-juego {
+
+    position: relative;
+
+    margin-bottom: 30px;
+
+    padding: 15px 10px;
 
     text-align: center;
 
 }
 
 
-/* ==========================================
-   CONTENIDO PRINCIPAL
-   ========================================== */
+.logo-badge {
 
-main {
+    display: inline-flex;
 
-    width: 90%;
+    justify-content: center;
 
-    max-width: 1200px;
+    align-items: center;
 
-    margin: 30px auto;
+    margin-bottom: 16px;
 
-    padding: 25px;
+    padding: 8px 18px;
 
-    background-color: #1e3a5f;
+    color:
+        var(--texto-oscuro);
 
-    border: 3px solid #f4c430;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
-    border-radius: 15px;
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+
+    text-transform:
+        uppercase;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--dorado),
+            var(--dorado-claro)
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.5);
+
+    border-radius:
+        999px;
+
+    box-shadow:
+        0 0 20px
+        rgba(255, 200, 61, 0.28);
 
 }
 
 
-/* ==========================================
-   TÍTULOS
-   ========================================== */
+/* =====================================================
+   7. TÍTULOS
+   ===================================================== */
 
 h1 {
 
-    color: #f4c430;
+    margin-bottom: 14px;
 
-    font-size: 38px;
+    color: white;
 
-    text-transform: uppercase;
+    font-family:
+        "Orbitron",
+        sans-serif;
 
-    margin-bottom: 10px;
+    font-size:
+        clamp(
+            34px,
+            6vw,
+            62px
+        );
+
+    font-weight:
+        900;
+
+    line-height:
+        1;
+
+    letter-spacing:
+        2px;
+
+    text-transform:
+        uppercase;
+
+    text-shadow:
+
+        0 0 8px
+        rgba(0, 217, 255, 0.4),
+
+        0 0 30px
+        rgba(39, 140, 255, 0.25);
 
 }
 
 
 h2 {
 
-    color: #ffd966;
+    margin-bottom: 12px;
+
+    color:
+        var(--dorado-claro);
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        clamp(
+            22px,
+            4vw,
+            30px
+        );
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1px;
 
 }
 
 
 h3 {
 
-    color: #f4c430;
+    color:
+        var(--dorado);
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-weight:
+        700;
 
 }
 
 
-/* ==========================================
-   TEXTOS
-   ========================================== */
+/* =====================================================
+   8. TEXTOS
+   ===================================================== */
 
 p {
 
-    line-height: 1.5;
+    font-size:
+        17px;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.6;
 
 }
 
 
-/* ==========================================
-   INPUT
-   ========================================== */
+.subtitulo {
 
-input {
+    max-width:
+        700px;
 
-    width: 280px;
+    margin:
+        0 auto;
 
-    padding: 12px;
+    color:
+        var(--texto-secundario);
 
-    margin: 10px;
+    font-size:
+        19px;
 
-    border: 2px solid #f4c430;
+    font-weight:
+        500;
 
-    border-radius: 5px;
-
-    font-size: 16px;
-
-}
-
-
-/* ==========================================
-   BOTONES
-   ========================================== */
-
-button {
-
-    padding: 10px 20px;
-
-    margin: 8px;
-
-    border: 2px solid #f4c430;
-
-    border-radius: 6px;
-
-    background-color: #2874c6;
-
-    color: white;
-
-    font-weight: bold;
-
-    cursor: pointer;
+    line-height:
+        1.6;
 
 }
 
 
-button:hover {
-
-    background-color: #1d5fa7;
-
-}
-
-
-/* ==========================================
-   ENLACES
-   ========================================== */
-
-a {
-
-    display: inline-block;
-
-    padding: 12px 25px;
-
-    margin: 10px;
-
-    background-color: #2874c6;
-
-    color: white;
-
-    border: 2px solid #f4c430;
-
-    border-radius: 6px;
-
-    text-decoration: none;
-
-    font-weight: bold;
-
-}
-
-
-a:hover {
-
-    background-color: #1d5fa7;
-
-}
-
-
-/* ==========================================
-   SECCIONES
-   ========================================== */
+/* =====================================================
+   9. SECCIONES
+   ===================================================== */
 
 section {
 
-    margin: 25px 0;
+    position: relative;
 
-    padding: 20px;
+    margin:
+        28px 0;
 
-    background-color: #16324f;
+    padding:
+        26px;
 
-    border-radius: 10px;
+    overflow:
+        hidden;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(17, 42, 70, 0.84),
+            rgba(7, 23, 40, 0.90)
+        );
+
+    border:
+        1px solid
+        rgba(98, 200, 255, 0.14);
+
+    border-radius:
+        var(--radio-grande);
+
+    box-shadow:
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.04),
+
+        0 15px 35px
+        rgba(0, 0, 0, 0.25);
+
+    backdrop-filter:
+        blur(8px);
 
 }
 
 
-/* ==========================================
-   MENSAJES
-   ========================================== */
+/* Barra decorativa izquierda */
+
+section::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 18%;
+
+    width: 3px;
+
+    height: 64%;
+
+    background:
+
+        linear-gradient(
+            var(--azul-neon),
+            var(--morado)
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(0, 217, 255, 0.55);
+
+}
+
+
+.seccion-cabecera {
+
+    margin-bottom:
+        22px;
+
+}
+
+
+.seccion-cabecera p {
+
+    color:
+        var(--texto-secundario);
+
+}
+
+
+/* =====================================================
+   10. INPUT
+   ===================================================== */
+
+.grupo-campo {
+
+    max-width:
+        520px;
+
+    margin:
+        25px auto;
+
+    text-align:
+        left;
+
+}
+
+
+.grupo-campo label {
+
+    display:
+        block;
+
+    margin-bottom:
+        9px;
+
+    color:
+        var(--azul-claro);
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1px;
+
+}
+
+
+input {
+
+    width:
+        100%;
+
+    padding:
+        15px 18px;
+
+    color:
+        white;
+
+    font-family:
+        "Rajdhani",
+        sans-serif;
+
+    font-size:
+        18px;
+
+    font-weight:
+        600;
+
+    outline:
+        none;
+
+    background:
+        rgba(4, 14, 26, 0.85);
+
+    border:
+        1px solid
+        rgba(98, 200, 255, 0.3);
+
+    border-radius:
+        12px;
+
+    transition:
+
+        border-color
+        0.2s ease,
+
+        box-shadow
+        0.2s ease;
+
+}
+
+
+input::placeholder {
+
+    color:
+        #658098;
+
+}
+
+
+input:focus {
+
+    border-color:
+        var(--azul-neon);
+
+    box-shadow:
+
+        0 0 0 3px
+        rgba(0, 217, 255, 0.09),
+
+        0 0 18px
+        rgba(0, 217, 255, 0.12);
+
+}
+
+
+/* =====================================================
+   11. BOTONES
+   ===================================================== */
+
+button,
+.boton {
+
+    position:
+        relative;
+
+    display:
+        inline-flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    min-height:
+        46px;
+
+    padding:
+        12px 23px;
+
+    overflow:
+        hidden;
+
+    border:
+        none;
+
+    border-radius:
+        10px;
+
+    color:
+        white;
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        12px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.5px;
+
+    text-decoration:
+        none;
+
+    text-transform:
+        uppercase;
+
+    cursor:
+        pointer;
+
+    transition:
+
+        transform
+        0.2s ease,
+
+        box-shadow
+        0.2s ease,
+
+        filter
+        0.2s ease;
+
+}
+
+
+button:hover,
+.boton:hover {
+
+    transform:
+        translateY(-3px);
+
+    filter:
+        brightness(1.12);
+
+}
+
+
+button:active,
+.boton:active {
+
+    transform:
+        scale(0.98);
+
+}
+
+
+button:disabled {
+
+    opacity:
+        0.45;
+
+    cursor:
+        not-allowed;
+
+    transform:
+        none;
+
+}
+
+
+/* BOTÓN PRINCIPAL */
+
+.boton-principal,
+#btnContinuar,
+#btnIrLuchar {
+
+    color:
+        #06101d;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ffc83d,
+            #ffe899
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.65);
+
+    box-shadow:
+        0 8px 25px
+        rgba(255, 200, 61, 0.2);
+
+}
+
+
+.boton-principal:hover,
+#btnContinuar:hover,
+#btnIrLuchar:hover {
+
+    box-shadow:
+        0 8px 30px
+        rgba(255, 200, 61, 0.38);
+
+}
+
+
+/* BOTÓN SECUNDARIO */
+
+.boton-secundario,
+#btnMazoAzar,
+#btnVolverArena {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #1879db,
+            #23b2ff
+        );
+
+    border:
+        1px solid
+        rgba(98, 200, 255, 0.45);
+
+    box-shadow:
+        0 8px 24px
+        rgba(39, 140, 255, 0.2);
+
+}
+
+
+.boton-peligro {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--rojo),
+            var(--rojo-oscuro)
+        );
+
+}
+
+
+/* =====================================================
+   12. ACCIONES
+   ===================================================== */
+
+.acciones-principales,
+.acciones-mazo {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap:
+        14px;
+
+    flex-wrap:
+        wrap;
+
+    margin-top:
+        22px;
+
+}
+
+
+/* =====================================================
+   13. MENSAJES
+   ===================================================== */
 
 #mensaje,
 #mensajeBatalla,
 #mensajeCombate {
 
-    color: #ffd966;
+    min-height:
+        28px;
 
-    font-weight: bold;
+    margin:
+        17px 0;
 
-    margin: 15px;
+    color:
+        var(--dorado-claro);
+
+    font-size:
+        18px;
+
+    font-weight:
+        700;
+
+    text-align:
+        center;
+
+}
+
+
+/* =====================================================
+   14. PORTADA
+   ===================================================== */
+
+.portada {
+
+    max-width:
+        950px;
+
+    min-height:
+        650px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+}
+
+
+.portada__icono {
+
+    margin-bottom:
+        20px;
+
+    font-size:
+        88px;
+
+    filter:
+
+        drop-shadow(
+            0 0 25px
+            rgba(255, 200, 61, 0.28)
+        );
+
+}
+
+
+.portada .boton {
+
+    min-width:
+        230px;
+
+    margin-top:
+        30px;
+
+}
+
+
+/* =====================================================
+   15. PERFIL DEL JUGADOR
+   ===================================================== */
+
+.perfil-jugador {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        16px;
+
+    flex-wrap:
+        wrap;
+
+    margin-bottom:
+        22px;
+
+    padding:
+        16px 20px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(5, 18, 33, 0.94),
+            rgba(13, 38, 63, 0.9)
+        );
+
+    border:
+        1px solid
+        rgba(98, 200, 255, 0.16);
+
+    border-radius:
+        13px;
+
+}
+
+
+.perfil-jugador p {
+
+    color:
+        var(--texto-secundario);
+
+    font-size:
+        16px;
+
+}
+
+
+.perfil-jugador strong {
+
+    margin-left:
+        5px;
+
+    color:
+        var(--dorado-claro);
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        13px;
+
+}
+
+
+/* =====================================================
+   16. SCROLLBAR
+   ===================================================== */
+
+::-webkit-scrollbar {
+
+    width:
+        10px;
+
+}
+
+
+::-webkit-scrollbar-track {
+
+    background:
+        #040a12;
+
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    background:
+
+        linear-gradient(
+            var(--azul),
+            var(--morado)
+        );
+
+    border-radius:
+        20px;
+
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+    background:
+        var(--azul-neon);
+
+}
+
+
+/* =====================================================
+   17. RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+    main {
+
+        width:
+            calc(100% - 16px);
+
+        margin:
+            8px auto;
+
+        padding:
+            18px;
+
+        border-radius:
+            18px;
+
+    }
+
+
+    section {
+
+        padding:
+            18px;
+
+    }
+
+
+    .perfil-jugador {
+
+        justify-content:
+            center;
+
+        text-align:
+            center;
+
+    }
+
+
+    button,
+    .boton {
+
+        width:
+            100%;
+
+    }
+
+
+    .portada {
+
+        min-height:
+            calc(100vh - 20px);
+
+    }
+
+
+    .portada__icono {
+
+        font-size:
+            68px;
+
+    }
 
 }
